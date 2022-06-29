@@ -3,9 +3,11 @@ Example of a python app that displays data using a graphical user interface. The
 
 
 1: This is how the main menu looks like where you have 2 input fields (1 for slecting the dataset and the last to enter the unique identifier value. The start button will generate reports in excel for each unique identifier value (see part 5)
+
 <img width="450" alt="image" src="https://user-images.githubusercontent.com/19918869/176546694-c5a55da8-9113-4842-8502-8e8bf3054cb5.png">
 
 2: This is a drilldown window showing more granular data based on a given specified unique identifier. This window has 2 buttons that generates a bar plot and line plot based on the current identifier (see 3 for the plots)
+
 <img width="420" alt="image" src="https://user-images.githubusercontent.com/19918869/176549858-8e66cb76-b370-4326-948a-db48898777a8.png">
 
 3: A bar plot and a line plot
