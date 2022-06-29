@@ -9,7 +9,7 @@ Example of a python app that displays data using a graphical user interface. The
 <img width="420" alt="image" src="https://user-images.githubusercontent.com/19918869/176549858-8e66cb76-b370-4326-948a-db48898777a8.png">
 
 3: A bar plot and a line plot
-<img width="260" alt="image" src="https://user-images.githubusercontent.com/19918869/176549918-b8729269-6789-4171-bae4-b4d1fd611820.png"> <img width="265" alt="image" src="https://user-images.githubusercontent.com/19918869/176549955-b45e31a3-e0dd-4995-95d5-9898f93907c3.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/19918869/176549918-b8729269-6789-4171-bae4-b4d1fd611820.png"> <img width="305" alt="image" src="https://user-images.githubusercontent.com/19918869/176549955-b45e31a3-e0dd-4995-95d5-9898f93907c3.png">
 
 -output data in excel forms 
 <img width="520" alt="image" src="https://user-images.githubusercontent.com/19918869/176550594-e9885933-da71-45e7-8724-58454008495b.png">
