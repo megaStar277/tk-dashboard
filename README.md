@@ -6,7 +6,7 @@ Example of a python app that displays data using a graphical user interface. The
 1: This is how the main menu looks like where you have 2 input fields (1 for slecting the dataset and the last to enter the unique identifier value. The start button will generate reports in excel for each unique identifier value (see part 5).
 
 <img width="420" alt="image" src="https://user-images.githubusercontent.com/19918869/176549858-8e66cb76-b370-4326-948a-db48898777a8.png">
-2: This is a drilldown window showing more granular data based on a given specified unique identifier
+2: This is a drilldown window showing more granular data based on a given specified unique identifier. This window has 2 buttons that generates a bar plot and line plot based on the current identifier (see 3 and 4)
 
 <img width="459" alt="image" src="https://user-images.githubusercontent.com/19918869/176549918-b8729269-6789-4171-bae4-b4d1fd611820.png">
 3: An bar plot window of a given specified unique identifier
