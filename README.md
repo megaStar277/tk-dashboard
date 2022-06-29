@@ -9,9 +9,11 @@ Example of a python app that displays data using a graphical user interface. The
 <img width="420" alt="image" src="https://user-images.githubusercontent.com/19918869/176549858-8e66cb76-b370-4326-948a-db48898777a8.png">
 
 3: An bar plot
+
 <img width="459" alt="image" src="https://user-images.githubusercontent.com/19918869/176549918-b8729269-6789-4171-bae4-b4d1fd611820.png">
 
 4: An line plot
+
 <img width="467" alt="image" src="https://user-images.githubusercontent.com/19918869/176549955-b45e31a3-e0dd-4995-95d5-9898f93907c3.png">
 
 -output data in excel forms 
