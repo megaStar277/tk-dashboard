@@ -180,14 +180,11 @@ def plotWindow():
     output_result = get_user_data(user_inputted, selected_dataset) 
 
     x = [0,2,4]
-    # xtext =['',output_result[2],''] 
     y =[0,output_result[2],0]
 
     fig, ax = plt.subplots(1, 1)
 
     ax.bar(x, y, color='blue', alpha=0.7)
-    # ax.text(1, 3, output_result[2],fontsize = 10, horizontalalignment='center', verticalalignment='top')
-    # addlabels(xtext, y, ax)  --> function to loop over text 
     ax.set_title(f'Contact:{output_result[1]}, Credit score is: {output_result[2]}', fontsize=20)
     ax.axhline(y=690, color='green',linestyle='--',label ='Sufficient',linewidth=3)
     ax.axhline(y=300, color='red',linestyle='--',label ='Unsufficient',linewidth=3)
@@ -250,9 +247,9 @@ def changeOnHover(button, colorOnHover, colorOnLeave):
 # List up the CSV option in a list 
 path = '/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS'
 OptionList =[]
-# OptionList_cus_num =[]
 
-for files in  os.scandir(path): #customers0
+
+for files in  os.scandir(path): 
     if files.name.endswith('.csv') == True:
         OptionList.append(files.name)
 
@@ -280,13 +277,12 @@ opt.pack()
 # hidden entry -> to search for cus num 
 userinput = tk.Entry(window)
 label_input = tk.Label(window, text = "Enter user_ID:", font=('Helvetica', 18),highlightbackground='white',highlightthickness=0)
-# userinput.pack()
+
 
 
 # Button to initiate run -> not finished yet 
 button_run_all = tk.Button(image = play_fin_img,height=120,  borderwidth=0, command=fn_all) #fg="#3E4149"
 button_run_all.config(background="white", bd = 0, highlightthickness = 0,  highlightbackground='#fff', highlightcolor='#fff', borderwidth=0) 
-# button_run_all.config(font=('Helvetica', 40, 'bold'), borderwidth='5', highlightthickness=2, pady=2) #highlightbackground='#3E4149'
 button_run_all.pack(pady=3)
 
 button_cus_num = tk.Button(text="Get Customer", width=15, height=1, fg="black", command=openNewWindow)
