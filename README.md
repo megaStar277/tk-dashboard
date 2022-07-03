@@ -19,3 +19,20 @@
 
 
 <h2>Script explanation</h2>
+####################################################################################################
+    # 1 IMPORT PACKAGES 
+####################################################################################################
+import tkinter as tk
+from tkinter import ttk
+import os
+from tkinter.tix import ButtonBox 
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+from matplotlib.backend_bases import key_press_handler
+from matplotlib.figure import Figure
+from matplotlib import pyplot as plt
+from PIL import Image,ImageTk
+from PIL import ImageTk as itk
+from tkmacosx import Button
