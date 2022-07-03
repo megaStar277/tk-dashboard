@@ -8,7 +8,7 @@ Example of a python app that displays data using a graphical user interface. The
 
 2: This is a drilldown window showing more granular data based on a given specified unique identifier. This window has 2 buttons that generates a bar plot and line plot based on the current identifier (see 3 for the plots)
 
-<img width="420" alt="image" src="https://user-images.githubusercontent.com/19918869/176549858-8e66cb76-b370-4326-948a-db48898777a8.png">
+<img width="320" alt="image" src="https://user-images.githubusercontent.com/19918869/176549858-8e66cb76-b370-4326-948a-db48898777a8.png">
 
 3: A bar and a line plot depicting for the selected unique identifier its values in easy to read and user friendly charts 
 
