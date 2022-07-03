@@ -1,5 +1,5 @@
 # GUI application using Tkinter 
-Example of a python app that displays data using a graphical user interface. The interface is generated using the Tkinter library. The app has the functionality to select datasets, displaying the data, displaying graphs, filtering between data, and generate seperate excel reports for each unique identifier.  
+<h2>Example of a python app that displays data using a graphical user interface. The interface is generated using the Tkinter library. The app has the functionality to select datasets, displaying the data, displaying graphs, filtering between data, and generate seperate excel reports for each unique identifier.</h2>  
 
 
 1: This is how the main menu looks like where you have 2 input fields (1 for slecting the dataset and the last to enter the unique identifier value. The start button will generate reports in excel for each unique identifier value (see part 4)
