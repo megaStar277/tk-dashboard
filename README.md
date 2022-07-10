@@ -48,9 +48,9 @@ window.title('Demo Application')
 window.configure(bg='#ffffff')
 
 # Specify the location of the images 
-play_img = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/start.png')
-logo = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/logo1.jpg')
-avatar = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/man.png')
+play_img = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data/images/start.png')
+logo = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data/images/logo1.jpg')
+avatar = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data/images/man.png')
 
 logo_sz = logo.resize((300,200))
 play_img_sz = play_img.resize((300,300))
@@ -66,7 +66,7 @@ avatar_fin_img = itk.PhotoImage(avatar_img_sz)
 # Function that outputs excel reports based on the unique identifier, in this case its the hard-coded "CustomerID".
 # The values are hard coded here, so this function might require change when using it for your specific case.
 def excelprep(choice, path):
-    df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/'+choice, encoding="utf-8", sep=';')
+    df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data/'+choice, encoding="utf-8", sep=';')
     # CustomerID is the specifed unique identifier. 
     for row in zip(df.CustomerId.unique()):
         print(row[0])
@@ -102,7 +102,7 @@ def get_user_data(user_inputted, selected_dataset):
     if user_inputted.isdecimal():  
         user_input = int(user_inputted.strip())
         # Specify here the location where to look 
-        df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/'+selected_dataset, encoding="utf-8", sep=';')
+        df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data/'+selected_dataset, encoding="utf-8", sep=';')
         testing_occurence = df.loc[df['CustomerId'] == user_input]
         if len(testing_occurence) == 0:
             return ['There is no customer with this ID-number']
@@ -135,7 +135,7 @@ def fn_all():
         pass
     else:
         name = 'test'
-        path = Path('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/EXCELFOLDER_'+ str(name))
+        path = Path('/Applications/XAMPP/xamppfiles/htdocs/Data/EXCELFOLDER_'+ str(name))
         path.mkdir(exist_ok=True)
         excelprep(choice, path) 
 
@@ -262,14 +262,50 @@ def changeOnHover(button, colorOnHover, colorOnLeave):
     button.bind("<Leave>", func=lambda e: button.config(fg=colorOnLeave))
 ```
 
-<h3> Initial prep when starting App </h3>
+<h3> Initial preperation when starting App </h3>
 
 ```python
-logo_sz = logo.resize((300,200))
+# List up the CSV option in a list 
+path = '/Applications/XAMPP/xamppfiles/htdocs/Data'
+OptionList =[]
+
+for files in  os.scandir(path): 
+    if files.name.endswith('.csv') == True:
+        OptionList.append(files.name)
+
+window.geometry('500x400')
+variable = tk.StringVar(window)
+variable.set("select an item")
 ```
 
 <h3> Widgets and running the App </h3>
 
 ```python
-logo_sz = logo.resize((300,200))
+# label for logo 
+w = tk.Label(window, image=logo_fin_img)
+w.config(bg="#ffffff") 
+w.pack()
+
+# Option menu for selecting the CSV 
+opt=tk.OptionMenu(window, variable, *OptionList, command=display_selected)
+opt.config(width=90, font=('Helvetica', 18))
+opt.pack()
+
+# The input field where users can input an unique identifier value 
+userinput = tk.Entry(window)
+label_input = tk.Label(window, text = "Enter user_ID:", font=('Helvetica', 18),highlightbackground='white',highlightthickness=0)
+
+
+# Button to initiate run, the START button
+button_run_all = tk.Button(image = play_fin_img,height=120,  borderwidth=0, command=fn_all) #fg="#3E4149"
+button_run_all.config(background="white", bd = 0, highlightthickness = 0,  highlightbackground='#fff', highlightcolor='#fff', borderwidth=0) 
+button_run_all.pack(pady=3)
+
+# Button to get a drill down window based on inputted unique identifier value 
+button_cus_num = tk.Button(text="Get Customer", width=15, height=1, fg="black", command=openNewWindow)
+button_cus_num.config(font=('Helvetica', 18, 'bold'), borderwidth='1', highlightthickness=2, pady=2)
+
+changeOnHover(button_cus_num, "#45bbff", "#3E4149")
+
+window.mainloop()
 ```
