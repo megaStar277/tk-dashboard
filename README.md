@@ -19,11 +19,8 @@
 
 
 <h2>Script explanation</h2>
-
+<h3>Importing packages</h3>
 ```python
-####################################################################################################
-    # Importing PACKAGES 
-####################################################################################################
 import tkinter as tk
 from tkinter import ttk
 import os
@@ -38,4 +35,39 @@ from matplotlib import pyplot as plt
 from PIL import Image,ImageTk
 from PIL import ImageTk as itk
 from tkmacosx import Button
+```
+
+<h3> configure TKinter window, set plot style, and specify images location  </h3>
+```python
+plt.style.use('ggplot')
+window = tk.Tk()
+window.title('Demo Application')
+window.configure(bg='#ffffff')
+
+# Specify the location of the images 
+play_img = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/start.png')
+logo = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/logo1.jpg')
+avatar = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/man.png')
+
+logo_sz = logo.resize((300,200))
+play_img_sz = play_img.resize((300,300))
+avatar_img_sz = avatar.resize((200,200))
+play_fin_img = itk.PhotoImage(play_img_sz)
+logo_fin_img = itk.PhotoImage(logo_sz)
+avatar_fin_img = itk.PhotoImage(avatar_img_sz)
+```
+
+<h3> Functions used within the App </h3>
+```python
+
+```
+
+<h3> Initial prep when starting App </h3>
+```python
+
+```
+
+<h3> Widgets and running the App </h3>
+```python
+
 ```
