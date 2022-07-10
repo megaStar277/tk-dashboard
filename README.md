@@ -17,8 +17,18 @@
 4: Generated excel files for each unique identifier present in the dataset. The generated excel files has 2 tabs with one depicting the respetive values and the other having a chart.  
 <img width="520" alt="image" src="https://user-images.githubusercontent.com/19918869/176550594-e9885933-da71-45e7-8724-58454008495b.png">
 
+<h2>Included files and how to run the code</h2>
+inlcuded in theis project are:
+1: The sample dataset on which this application is based. So if you want to use a different dataset, then please adjust the script according to your need.
+2: Images used within the application 
+3: The main script 
+
+Just run the script in a Python envrionment. Please make sure to have to have changed all the paths/directories based on your systems directory structure. 
+
 
 <h2>Script description</h2>
+Below here is a brief decription of the different parts of the script used to compose the app. Please be advised that I used in my case a dataset with hard coded variable names. As such you are not using the sample dataset provided, you might want to change the code according to your dataset 
+ 
 
 <h3>Importing packages</h3>
 
@@ -66,8 +76,9 @@ avatar_fin_img = itk.PhotoImage(avatar_img_sz)
 # Function that outputs excel reports based on the unique identifier, in this case its the hard-coded "CustomerID".
 # The values are hard coded here, so this function might require change when using it for your specific case.
 def excelprep(choice, path):
+    # Specify here the location where to look, otherwise errors might pop up
     df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data/'+choice, encoding="utf-8", sep=';')
-    # CustomerID is the specifed unique identifier. 
+    # CustomerID is the specifed unique identifier. -> customize based on your need
     for row in zip(df.CustomerId.unique()):
         print(row[0])
         xlxwriter = pd.ExcelWriter(path / str(str(row[0])+'customer_data.xlsx'), engine='xlsxwriter') # define wb with writer fn 
@@ -101,7 +112,7 @@ def excelprep(choice, path):
 def get_user_data(user_inputted, selected_dataset):
     if user_inputted.isdecimal():  
         user_input = int(user_inputted.strip())
-        # Specify here the location where to look 
+        # Specify here the location where to look, otherwise errors might pop up
         df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data/'+selected_dataset, encoding="utf-8", sep=';')
         testing_occurence = df.loc[df['CustomerId'] == user_input]
         if len(testing_occurence) == 0:
@@ -135,6 +146,7 @@ def fn_all():
         pass
     else:
         name = 'test'
+        # Adjust the path based on your directory structure, otherwise errors might pop up
         path = Path('/Applications/XAMPP/xamppfiles/htdocs/Data/EXCELFOLDER_'+ str(name))
         path.mkdir(exist_ok=True)
         excelprep(choice, path) 
@@ -266,6 +278,7 @@ def changeOnHover(button, colorOnHover, colorOnLeave):
 
 ```python
 # List up the CSV option in a list 
+# Adjust the path based on your directory structure, otherwise app might not start 
 path = '/Applications/XAMPP/xamppfiles/htdocs/Data'
 OptionList =[]
 
