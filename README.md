@@ -278,7 +278,7 @@ variable = tk.StringVar(window)
 variable.set("select an item")
 ```
 
-<h3> Widgets and running the App </h3>
+<h3> Widgets used in the App </h3>
 
 ```python
 # label for logo 
