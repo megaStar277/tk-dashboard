@@ -59,15 +59,15 @@ avatar_fin_img = itk.PhotoImage(avatar_img_sz)
 
 <h3> Functions used within the App </h3>
 ```python
-
+logo_sz = logo.resize((300,200))
 ```
 
 <h3> Initial prep when starting App </h3>
 ```python
-
+logo_sz = logo.resize((300,200))
 ```
 
 <h3> Widgets and running the App </h3>
 ```python
-
+logo_sz = logo.resize((300,200))
 ```
