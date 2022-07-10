@@ -1,3 +1,7 @@
+####################################################################################################
+    # IMPORTing PACKAGES 
+####################################################################################################
+import tkinter as tk
 import tkinter as tk
 from tkinter import ttk
 import os
@@ -13,19 +17,15 @@ from PIL import Image,ImageTk
 from PIL import ImageTk as itk
 from tkmacosx import Button
 
-
-
-
 plt.style.use('ggplot')
 window = tk.Tk()
 window.title('Demo Application')
 window.configure(bg='#ffffff')
 
-# LOCATION DIR
-play_img = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/start.png')
-logo = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/logo1.jpg')
-avatar = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/images/man.png')
-
+# Specify the location of the images 
+play_img = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data/images/start.png')
+logo = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data/images/logo1.jpg')
+avatar = Image.open('/Applications/XAMPP/xamppfiles/htdocs/Data/images/man.png')
 
 logo_sz = logo.resize((300,200))
 play_img_sz = play_img.resize((300,300))
@@ -34,21 +34,18 @@ play_fin_img = itk.PhotoImage(play_img_sz)
 logo_fin_img = itk.PhotoImage(logo_sz)
 avatar_fin_img = itk.PhotoImage(avatar_img_sz)
 
-
-
-####################################################################################################
-    # FUNCTIONS 
-####################################################################################################
-
+# Function that outputs excel reports based on the unique identifier, in this case its the hard-coded "CustomerID".
+# The values are hard coded here, so this function might require change when using it for your specific case.
 def excelprep(choice, path):
-    df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/'+choice, encoding="utf-8", sep=';')
+    df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data/'+choice, encoding="utf-8", sep=';')
+    # CustomerID is the specifed unique identifier. 
     for row in zip(df.CustomerId.unique()):
         print(row[0])
         xlxwriter = pd.ExcelWriter(path / str(str(row[0])+'customer_data.xlsx'), engine='xlsxwriter') # define wb with writer fn 
         workbook  = xlxwriter.book
         worksheet1 = workbook.add_worksheet('Customer')
 
-        # formating ------------
+        # formating of the excel report------------
         formating = workbook.add_format({'bold': True, 'font_color':'white', 'bg_color':'black'})
         worksheet1.set_column('A:A',20)
         worksheet1.write('A1', 'Customer ID:', formating)
@@ -59,9 +56,10 @@ def excelprep(choice, path):
         worksheet1.write('B3', df.loc[df['CustomerId'] == row[0], 'Age'].unique()[0])
         
     
-        df[df.CustomerId ==row[0]].to_excel(xlxwriter, sheet_name='Data', index=False) # adding df to sheet 
+        df[df.CustomerId ==row[0]].to_excel(xlxwriter, sheet_name='Data', index=False) # adding data to sheet in excel 
         worksheet2 = xlxwriter.sheets['Data']
         
+        # example of creating an excel chart
         chart = workbook.add_chart({'type': 'column'})
         chart.add_series({
             'categories': '=Data!$C$2:$C$3',
@@ -69,11 +67,13 @@ def excelprep(choice, path):
         worksheet2.insert_chart('A5', chart)
         xlxwriter.save()
 
+# Function that checks whether specified unique identifier exists, if yes than it would procceed to get the right values. 
+# The values are hard coded here, so this function might require change when using it for your specific case.
 def get_user_data(user_inputted, selected_dataset):
     if user_inputted.isdecimal():  
         user_input = int(user_inputted.strip())
-        df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/'+selected_dataset, encoding="utf-8", sep=';')
-        # pass
+        # Specify here the location where to look 
+        df = pd.read_csv('/Applications/XAMPP/xamppfiles/htdocs/Data/'+selected_dataset, encoding="utf-8", sep=';')
         testing_occurence = df.loc[df['CustomerId'] == user_input]
         if len(testing_occurence) == 0:
             return ['There is no customer with this ID-number']
@@ -90,7 +90,7 @@ def get_user_data(user_inputted, selected_dataset):
 
 
 
-# FN that shows the selected dropdown -> and shows hidden buttons 
+# Unhides buttons and functions whenever a user selects a dataset from the main screen. 
 def display_selected(choice):
     choice = variable.get()
     if choice != "select an item" or choice != "":
@@ -99,21 +99,19 @@ def display_selected(choice):
         show_widget(button_cus_num)
 
 
-
-
-# Fn to run an action when button pushed -> 
+# When user presses the START button then this will call the required functions 
 def fn_all():
     choice = variable.get()
     if choice == "select an item" or choice == "":
         pass
     else:
         name = 'test'
-        path = Path('/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS/EXCELFOLDER_'+ str(name))
+        path = Path('/Applications/XAMPP/xamppfiles/htdocs/Data/EXCELFOLDER_'+ str(name))
         path.mkdir(exist_ok=True)
         excelprep(choice, path) 
 
 
-# fn to unhide user select widget 
+# funtion to unhide user select widget 
 def show_widget(widget):
     print(widget.winfo_class())
     if widget.winfo_class() == 'Entry':
@@ -124,7 +122,7 @@ def show_widget(widget):
         widget.pack(side= tk.BOTTOM, pady=3, expand=True)
 
 
-# fn to open a customer ID details window 
+# Function that opens a unique identifier details window based on the inputted value in the main window screen 
 def openNewWindow():
     newWindow = tk.Toplevel(window)
     user_inputted = userinput.get()
@@ -136,7 +134,6 @@ def openNewWindow():
     if len(output_result) > 1:
         newWindow.title(user_inputted + " detailed information")
         newWindow.geometry("430x450")
-
 
         tk.Label(newWindow, image=avatar_fin_img).grid(row=0, column=0, padx=5, pady=5)
 
@@ -155,11 +152,9 @@ def openNewWindow():
         tk.Label(newWindow, text = "Date of birth:", font=('Helvetica', 18 ,'bold'), foreground ='blue').grid(row=5, column=0, padx=5, pady=5)
         tk.Label(newWindow, text = output_result[4], font=('Helvetica', 18)).grid(row=5, column=2, padx=5, pady=5)
 
-        # TESTING PLT-> button to show plot XXXXXXXXXX
         button_plt = tk.Button(newWindow, text="Display credit health", width=15, height=1, fg="black", command=plotWindow)
         button_plt.config(font=('Helvetica', 18, 'bold'), borderwidth='1', highlightthickness=2, pady=2)
         button_plt.grid(row=7, column=0, padx=5, pady=5)
-        # TESTING PLT-> button to show hystroical plots 
         button_plt = tk.Button(newWindow, text="Display spend history", width=15, height=1, fg="black", command=plotWindow_series)
         button_plt.config(font=('Helvetica', 18, 'bold'), borderwidth='1', highlightthickness=2, pady=2)
         button_plt.grid(row=7, column=2, padx=5, pady=5)
@@ -170,7 +165,7 @@ def openNewWindow():
         tk.Label(newWindow, text = "Nothing found").pack()
 
 
-# fn to display a plot from the customer id window credit score 
+# Display a bar chart based on the inputted unique identifier in the main screen  
 def plotWindow():
     pltWindow = tk.Toplevel(window)
     pltWindow.title( "bar chart credit score")
@@ -201,7 +196,7 @@ def plotWindow():
     toolbar.update()
     canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
-# fn to display a plot histrorical plot 
+# Display a line chart based on the inputted unique identifier in the main screen  
 def plotWindow_series():
     pltWindow = tk.Toplevel(window)
     pltWindow.title( "Expenditures per period")
@@ -230,40 +225,28 @@ def plotWindow_series():
     canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 
-
-
+# Styling applied to buttons when hovering over them with mouse 
 def changeOnHover(button, colorOnHover, colorOnLeave):
     button.bind("<Enter>", func=lambda e: button.config(highlightbackground=colorOnHover))
     button.bind("<Enter>", func=lambda e: button.config(fg=colorOnHover))
     button.bind("<Leave>", func=lambda e: button.config(highlightbackground=colorOnLeave))
     button.bind("<Leave>", func=lambda e: button.config(fg=colorOnLeave))
+  
 
-
-
-
-####################################################################################################
-    # DATA PRE-PREP
-####################################################################################################
 # List up the CSV option in a list 
-path = '/Applications/XAMPP/xamppfiles/htdocs/Data_Ano_ICS'
+path = '/Applications/XAMPP/xamppfiles/htdocs/Data'
 OptionList =[]
-
 
 for files in  os.scandir(path): 
     if files.name.endswith('.csv') == True:
         OptionList.append(files.name)
 
 window.geometry('500x400')
-# TK element drop down box -> not the drowdown but just value 
 variable = tk.StringVar(window)
 variable.set("select an item")
 
 
 
-
-####################################################################################################
-    # WIDGETS 
-####################################################################################################
 # label for logo 
 w = tk.Label(window, image=logo_fin_img)
 w.config(bg="#ffffff") 
@@ -274,20 +257,21 @@ opt=tk.OptionMenu(window, variable, *OptionList, command=display_selected)
 opt.config(width=90, font=('Helvetica', 18))
 opt.pack()
 
-# hidden entry -> to search for cus num 
+# The input field where users can input an unique identifier value 
 userinput = tk.Entry(window)
 label_input = tk.Label(window, text = "Enter user_ID:", font=('Helvetica', 18),highlightbackground='white',highlightthickness=0)
 
 
-
-# Button to initiate run -> not finished yet 
+# Button to initiate run, the START button
 button_run_all = tk.Button(image = play_fin_img,height=120,  borderwidth=0, command=fn_all) #fg="#3E4149"
 button_run_all.config(background="white", bd = 0, highlightthickness = 0,  highlightbackground='#fff', highlightcolor='#fff', borderwidth=0) 
 button_run_all.pack(pady=3)
 
+# Button to get a drill down window based on inputted unique identifier value 
 button_cus_num = tk.Button(text="Get Customer", width=15, height=1, fg="black", command=openNewWindow)
 button_cus_num.config(font=('Helvetica', 18, 'bold'), borderwidth='1', highlightthickness=2, pady=2)
 
 changeOnHover(button_cus_num, "#45bbff", "#3E4149")
 
 window.mainloop()
+
