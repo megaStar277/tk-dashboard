@@ -18,7 +18,6 @@
 <img width="520" alt="image" src="https://user-images.githubusercontent.com/19918869/176550594-e9885933-da71-45e7-8724-58454008495b.png">
 
 <h2>Included files and how to run the app</h2>
-inlcuded in theis project are:
 <div>1: The sample dataset on which this application is based. So if you want to use a different dataset, then please adjust the script according to your need.</div>
 <div>2: Images used within the application </div>
 <div>3: The main script </div>
