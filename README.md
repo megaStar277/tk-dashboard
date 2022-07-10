@@ -24,7 +24,7 @@ inlcuded in theis project are:
 <div>3: The main script </div>
 <br></br>
 <div>Just run the script in a Python envrionment. Also make sure to have to have changed all the paths/directories based on your systems directory structure, since these are all hard-coded in the script. </div>
-
+<br></br>
 
 <h2>Script description</h2>
 Below here is a brief decription of the different parts of the script used to compose the app. Please be advised that I used in my case a dataset with hard coded variable names. As such you are not using the sample dataset provided, you might want to change the code according to your dataset 
