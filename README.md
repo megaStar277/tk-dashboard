@@ -19,7 +19,9 @@
 
 
 <h2>Script explanation</h2>
+
 <h3>Importing packages</h3>
+
 ```python
 import tkinter as tk
 from tkinter import ttk
