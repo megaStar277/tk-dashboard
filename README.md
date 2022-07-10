@@ -18,7 +18,7 @@
 <img width="520" alt="image" src="https://user-images.githubusercontent.com/19918869/176550594-e9885933-da71-45e7-8724-58454008495b.png">
 
 
-<h2>Script explanation</h2>
+<h2>Script description</h2>
 
 <h3>Importing packages</h3>
 
@@ -40,6 +40,7 @@ from tkmacosx import Button
 ```
 
 <h3> configure TKinter window, set plot style, and specify images location  </h3>
+
 ```python
 plt.style.use('ggplot')
 window = tk.Tk()
@@ -60,16 +61,19 @@ avatar_fin_img = itk.PhotoImage(avatar_img_sz)
 ```
 
 <h3> Functions used within the App </h3>
+
 ```python
 logo_sz = logo.resize((300,200))
 ```
 
 <h3> Initial prep when starting App </h3>
+
 ```python
 logo_sz = logo.resize((300,200))
 ```
 
 <h3> Widgets and running the App </h3>
+
 ```python
 logo_sz = logo.resize((300,200))
 ```
