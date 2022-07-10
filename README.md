@@ -21,9 +21,8 @@
 <h2>Script explanation</h2>
 
 ```python
-
 ####################################################################################################
-    # IMPORTing PACKAGES 
+    # Importing PACKAGES 
 ####################################################################################################
 import tkinter as tk
 from tkinter import ttk
@@ -39,5 +38,4 @@ from matplotlib import pyplot as plt
 from PIL import Image,ImageTk
 from PIL import ImageTk as itk
 from tkmacosx import Button
-
 ```
