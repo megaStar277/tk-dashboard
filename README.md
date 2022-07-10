@@ -19,9 +19,9 @@
 
 <h2>Included files and how to run the code</h2>
 inlcuded in theis project are:
-1: The sample dataset on which this application is based. So if you want to use a different dataset, then please adjust the script according to your need.
-2: Images used within the application 
-3: The main script 
+<div>1: The sample dataset on which this application is based. So if you want to use a different dataset, then please adjust the script according to your need.</div>
+<div>2: Images used within the application </div>
+<div>3: The main script </div>
 
 Just run the script in a Python envrionment. Please make sure to have to have changed all the paths/directories based on your systems directory structure. 
 
