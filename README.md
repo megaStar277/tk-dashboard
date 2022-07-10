@@ -17,13 +17,13 @@
 4: Generated excel files for each unique identifier present in the dataset. The generated excel files has 2 tabs with one depicting the respetive values and the other having a chart.  
 <img width="520" alt="image" src="https://user-images.githubusercontent.com/19918869/176550594-e9885933-da71-45e7-8724-58454008495b.png">
 
-<h2>Included files and how to run the code</h2>
+<h2>Included files and how to run the app</h2>
 inlcuded in theis project are:
 <div>1: The sample dataset on which this application is based. So if you want to use a different dataset, then please adjust the script according to your need.</div>
 <div>2: Images used within the application </div>
 <div>3: The main script </div>
-
-Just run the script in a Python envrionment. Please make sure to have to have changed all the paths/directories based on your systems directory structure. 
+<br></br>
+<div>Just run the script in a Python envrionment. Also make sure to have to have changed all the paths/directories based on your systems directory structure, since these are all hard-coded in the script. </div>
 
 
 <h2>Script description</h2>
